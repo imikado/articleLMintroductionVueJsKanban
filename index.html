@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Kanban</title>
+  </head>
+  <body>
+
+    <div class="container">
+
+        <div class="row">
+
+          <div id="todoUl" class="col-sm-4">
+            <h2 class="text-secondary">A faire</h2>
+
+            <div v-for="task in taskList" class="card">
+              <h5 class="card-header ">{{ task.title}}</h5>
+              <div class="card-body">
+                <p class="card-text">{{ task.text}}</p>
+              </div>
+            </div>
+
+            <p><a class="btn btn-primary" href="#" @click="addTask({title:'nouvelle tache',text:'description'})">Ajouter</a></p>
+          </div>
+
+          <div id="doingUl" class="col-sm-4">
+            <h2 class="text-secondary">En cours</h2>
+ 
+          </div>
+
+
+          
+          <div id="doneUl" class="col-sm-4">
+            <h2 class="text-secondary">Fait</h2>
+ 
+          </div>
+            
+
+        </div>
+ 
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+    </body>
+</html>
