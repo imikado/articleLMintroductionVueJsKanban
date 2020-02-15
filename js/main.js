@@ -1,3 +1,5 @@
+const globalURI='http://localhost/sync/LM/vueJs/kanbanCours1/API'
+
 var todoList = new Vue({
     el:'#todoUl',
 
@@ -19,7 +21,7 @@ var todoList = new Vue({
             
             axios({
                 method: 'post',
-                url: 'http://localhost/sync/LM/vueJs/kanbanCours1/API/taskAdd.php',
+                url: globalURI+'/taskAdd.php',
                 data: postData
             })
             .then(response => {
@@ -29,7 +31,7 @@ var todoList = new Vue({
 
         load:function(){
             axios
-            .get('http://localhost/sync/LM/vueJs/kanbanCours1/API/taskList.php')
+            .get(globalURI+'/taskList.php')
             .then( response => {
                 console.log(response);
                 console.log( response.data);
@@ -39,8 +41,3 @@ var todoList = new Vue({
 
     }
 });
-
-/*
-addTaskOFF:function(data_){
-            this.taskList.push(data_);
-        },*/
