@@ -12,14 +12,10 @@
 
     <div class="container" id="kanbanApp">
 
-        <div class="row">
-
            <div class="row">
-            <kanban-col v-for='column in columns' :key="column.name" v-bind:title="column.name" v-bind:list="tasks" v-bind:cols="(12/columns.length)" v-bind:status="column.status"   ></kanban-col>
+            <kanban-col v-for='column in columns' :key="column.name" v-bind:title="column.name" v-bind:list="taskList" v-bind:cols="(12/columns.length)"  ></kanban-col>
           </div>
-
-        </div>
- 
+  
     </div>
   
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
