@@ -6,29 +6,23 @@ var myApp=new Vue({
 
     data:{
         taskList:[],
-        columns:[
-            {name:'A faire' },
-            {name:'En cours' },
-            {name:'Fait' }, 
-            
+        columnList:[
+            {id:1,name:'A faire' },
+            {id:2,name:'En cours' },
+            {id:3,name:'Fait' }, 
         ],
     },
-
     mounted:function(){
         this.load();      
     },
-
     methods:{
         load:function(){
             axios
             .get(globalURI+'/taskList.php')
             .then( response => {
-                console.log(response);
-                console.log( response.data);
                 this.taskList =  response.data;
             });
         }
     }
-
  });
  
