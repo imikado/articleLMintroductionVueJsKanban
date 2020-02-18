@@ -1,4 +1,4 @@
-const globalURI='http://localhost/sync/LM/vueJs/kanbanCours1/API'
+const globalURI='http://localhost/sync/LM/vueJs/github/kanban/introduction_composants/API'
 
 var myApp=new Vue({
 
@@ -13,7 +13,12 @@ var myApp=new Vue({
         ],
     },
     mounted:function(){
-        this.load();      
+        this.load();     
+        
+        this.$on('eventaddtask',function(data_){
+            this.addTask(data_);
+        });
+          
     },
     methods:{
         load:function(){
@@ -22,7 +27,21 @@ var myApp=new Vue({
             .then( response => {
                 this.taskList =  response.data;
             });
-        }
+        },
+        addTask:function(taskToAdd_){
+
+            var postData=new FormData();
+            postData.append('task',JSON.stringify(taskToAdd_))
+            
+            axios({
+                method: 'post',
+                url: globalURI+'/taskAdd.php',
+                data: postData
+            })
+            .then(response => {
+                this.load();
+            });
+        },
     }
  });
  
