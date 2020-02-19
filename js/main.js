@@ -15,7 +15,7 @@ var myApp=new Vue({
     mounted:function(){
         this.load();     
         
-        this.$on('eventaddtask',function(data_){
+        this.$on('event-add-task',function(data_){
             this.addTask(data_);
         });
           
@@ -41,7 +41,7 @@ var myApp=new Vue({
             .then(response => {
                 this.load();
             });
-        },
+        } 
     }
  });
  

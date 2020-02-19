@@ -18,7 +18,8 @@ Vue.component('kanban-form', {
             data.text=this.text;
             data.column_id=1;
  
-            this.$parent.$emit('eventaddtask',data);
+            //this.$root.addTask(data);
+            this.$root.$emit('event-add-task',data);
 
             $('#newTask').modal('hide');
 

@@ -2,5 +2,6 @@ CREATE TABLE Tasks
 (
     id INT PRIMARY KEY NOT NULL  AUTO_INCREMENT,
     title VARCHAR(100),
-    text TEXT
+    text TEXT,
+    COLUMN column_id INT NOT NULL DEFAULT 1 
 )
