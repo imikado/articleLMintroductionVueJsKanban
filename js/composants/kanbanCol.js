@@ -20,10 +20,6 @@ Vue.component('kanban-col', {
                 <p class="card-text">{{ task.text}}</p>
             </div>
         </div>
-
-        <div class="card kanbanTaskDrop" >
-        <h5 class="card-body ">&nbsp;</h5>
-        </div>
     </div>
     `
   });
