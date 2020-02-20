@@ -13,7 +13,7 @@
     <div class="container" id="kanbanApp" >
 
            <div class="row">
-            <kanban-col v-for='column in columnList' :key="column.name" v-bind:columnid="column.id" v-bind:title="column.name" v-bind:list="taskList" v-bind:width="(12/columnList.length)"  ></kanban-col>
+            <kanban-col v-bind:movingtask="movingTask" v-for='column in columnList' :key="column.name" v-bind:columnid="column.id" v-bind:title="column.name" v-bind:list="taskList" v-bind:width="(12/columnList.length)"  ></kanban-col>
           </div>
 
           <div class="row">

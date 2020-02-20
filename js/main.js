@@ -1,4 +1,4 @@
-const globalURI='http://localhost/sync/LM/vueJs/github/kanban/introduction_composants/API'
+const globalURI='http://localhost/sync/LM/vueJs/github/kanban/introduction_dragAndDrop/API'
 
 var myApp=new Vue({
 
@@ -11,12 +11,25 @@ var myApp=new Vue({
             {id:2,name:'En cours' },
             {id:3,name:'Fait' }, 
         ],
+        movingTask:null,
     },
     mounted:function(){
         this.load();     
         
         this.$on('event-add-task',function(data_){
             this.addTask(data_);
+        });
+
+        this.$on('event-start-moving',function(movingTask_){
+            this.movingTask=movingTask_;
+        });
+        this.$on('event-stop-moving',function(){
+            this.movingTask=null;
+        });
+
+        this.$on('event-drop-into',function(columnId_){
+            this.movingTask.column_id=columnId_;
+            this.updateTask(this.movingTask);
         });
           
     },
@@ -41,7 +54,24 @@ var myApp=new Vue({
             .then(response => {
                 this.load();
             });
+        },
+        updateTask:function(taskToUpdate_){
+
+            var postData=new FormData();
+            postData.append('task',JSON.stringify(taskToUpdate_))
+            
+            axios({
+                method: 'post',
+                url: globalURI+'/taskUpdate.php',
+                data: postData
+            })
+            .then(response => {
+                this.load();
+            });
         } 
     }
  });
  
+ function allowDrop(ev) {
+    ev.preventDefault();
+}
